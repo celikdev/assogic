@@ -1,4 +1,12 @@
-import { Home, HowItWorks, Login, NotFound, Register } from "./screens";
+import {
+  Account,
+  Home,
+  HowItWorks,
+  Login,
+  MyCompany,
+  NotFound,
+  Register,
+} from "./screens";
 
 export const routes = [
   {
@@ -12,6 +20,14 @@ export const routes = [
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/account",
+    element: <Account />,
+  },
+  {
+    path: "/my-company/:companyID",
+    element: <MyCompany />,
   },
   {
     path: "/how-it-works",

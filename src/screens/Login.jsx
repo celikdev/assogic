@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import altogic from "../Altogic";
 import { Container, Footer } from "../components/main";
 import Header from "../components/main/Header";
-import { Button, Input } from "../components/main/UI";
+import { Button, ErrorBox, Input } from "../components/main/UI";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,6 +12,8 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ const Login = () => {
     <>
       <Header />
       <Container>
+        <ErrorBox error={error} errorMessage={errorMessage} />
         <div className="w-1/4 gap-8 py-4 flex flex-col items-center rounded-lg bg-primary filter drop-shadow-lg">
           <h1 className="font-Montserrat font-bold">Login to Assogic</h1>
           <div className="flex flex-col gap-4 items-center w-full">
@@ -43,17 +46,17 @@ const Login = () => {
               placeholder="Password"
             />
             <Button onClick={handleLogin}>
-              <text className="font-Montserrat font-bold text-sm text-main">
+              <h1 className="font-Montserrat font-bold text-sm text-main">
                 Login
-              </text>
+              </h1>
             </Button>
             <Link to="/forgot-password">
-              <text className="font-bold text-sm">Forgot Password</text>
+              <h1 className="font-bold text-sm">Forgot Password</h1>
             </Link>
             <Link to="/register">
-              <text className="font-bold text-xs">
+              <h1 className="font-bold text-xs">
                 Don’t you have an account? Register Now
-              </text>
+              </h1>
             </Link>
           </div>
         </div>

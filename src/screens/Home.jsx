@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { ExampleCards } from "../components/Home";
 
 import { Container, Header } from "../components/main";
 
@@ -7,11 +8,12 @@ const Home = () => {
     <>
       <Header />
       <Container>
-        <div className="bg-red-400 container">
-          <h1 className="font-Montserrat font-extrabold text-8xl">
-            The Best <br /> Asset Management App
-          </h1>
+        <div className="container flex justify-center">
+          <span className="font-Montserrat font-extrabold text-8xl text-main">
+            <h1 className="opacity-50">The Best</h1> Asset Management App
+          </span>
         </div>
+        <ExampleCards />
       </Container>
     </>
   );

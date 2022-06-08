@@ -1,26 +1,34 @@
 import React, { useState } from "react";
 import altogic from "../Altogic";
 
-import { Container } from "../components/main";
+import { Container, Footer } from "../components/main";
 import Header from "../components/main/Header";
-import { Button, Input } from "../components/main/UI";
+import { Button, ErrorBox, Input } from "../components/main/UI";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleRegister = async (e) => {
     e.preventDefault();
-    await altogic.auth
-      .signUpWithEmail(email, password, name)
-      .then((res) => console.log(res));
+
+    await altogic.auth.signUpWithEmail(email, password, name).then((res) => {
+      if (res.errors && res.errors.items[0].code === "email_not_unique") {
+        setError(true);
+        setErrorMessage("This email cannot be used!");
+      }
+    });
   };
 
   return (
     <>
       <Header />
       <Container>
+        <ErrorBox error={error} errorMessage={errorMessage} />
         <div className="w-1/4 gap-8 py-4 flex flex-col items-center rounded-lg bg-primary filter drop-shadow-lg">
           <h1 className="font-Montserrat font-bold">Register on Assogic</h1>
           <div className="flex flex-col gap-4 items-center w-full">
@@ -53,6 +61,7 @@ const Register = () => {
           </div>
         </div>
       </Container>
+      <Footer />
     </>
   );
 };

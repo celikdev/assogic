@@ -8,7 +8,7 @@ const Header = () => {
   const [cookies, setCookie] = useCookies(["userToken"]);
 
   return (
-    <header className="bg-primary h-16 shadow-md flex items-center px-36 justify-between">
+    <header className="bg-primary h-16 shadow-md flex items-center pl-96 px-36 justify-between">
       <img alt="asslogic-logo" src={Logo} className="w-9" />
       <div className="flex gap-8">
         <Link to="/">
@@ -18,7 +18,7 @@ const Header = () => {
           <h1 className="font-Montserrat font-bold text-main">How It Works?</h1>
         </Link>
         {cookies.userToken ? (
-          <Link to="/">
+          <Link to="/my-company">
             <h1 className="font-Montserrat font-bold text-main">My Company</h1>
           </Link>
         ) : null}
