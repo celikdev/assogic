@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import altogic from "../Altogic";
 
 import { Container, Footer } from "../components/main";
@@ -6,6 +7,7 @@ import Header from "../components/main/Header";
 import { Button, ErrorBox, Input } from "../components/main/UI";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,13 +17,15 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    await altogic.auth.signUpWithEmail(email, password, name).then((res) => {
-      if (res.errors && res.errors.items[0].code === "email_not_unique") {
-        setError(true);
-        setErrorMessage("This email cannot be used!");
-      }
-    });
+    await altogic.auth
+      .signUpWithEmail(email, password, name)
+      .then((res) => {
+        if (res.errors && res.errors.items[0].code === "email_not_unique") {
+          setError(true);
+          setErrorMessage("This email cannot be used!");
+        }
+      })
+      .then((res) => navigate("/create-or-join"));
   };
 
   return (

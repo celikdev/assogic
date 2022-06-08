@@ -1,5 +1,6 @@
 import {
   Account,
+  CreateOrJoin,
   Home,
   HowItWorks,
   Login,
@@ -24,6 +25,10 @@ export const routes = [
   {
     path: "/account",
     element: <Account />,
+  },
+  {
+    path: "/create-or-join",
+    element: <CreateOrJoin />,
   },
   {
     path: "/my-company/:companyID",

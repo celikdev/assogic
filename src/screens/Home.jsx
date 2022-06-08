@@ -9,8 +9,9 @@ const Home = () => {
       <Header />
       <Container>
         <div className="container flex justify-center">
-          <span className="font-Montserrat font-extrabold text-8xl text-main">
-            <h1 className="opacity-50">The Best</h1> Asset Management App
+          <span className="font-Montserrat text-secondary font-extrabold text-8xl filter drop-shadow-xl">
+            <h1 className="opacity-50 text-main">The Best</h1> Asset Management
+            App
           </span>
         </div>
         <ExampleCards />

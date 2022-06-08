@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import altogic from "../Altogic";
 import { Container, Header } from "../components/main";
 
@@ -9,7 +9,7 @@ const Account = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
 
   useEffect(() => {
-    if (!cookies.token) {
+    if (!cookies.userToken) {
       navigate("/");
     }
   }, []);
