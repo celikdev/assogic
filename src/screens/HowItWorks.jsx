@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Header } from "../components/main";
+import { Container, Footer, Header } from "../components/main";
 import DownArrow from "../assets/down-arrow.svg";
 
 const Home = () => {
@@ -28,6 +28,7 @@ const Home = () => {
           </div>
         </div>
       </Container>
+      <Footer />
     </>
   );
 };

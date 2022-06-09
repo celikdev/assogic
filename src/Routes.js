@@ -31,7 +31,7 @@ export const routes = [
     element: <CreateOrJoin />,
   },
   {
-    path: "/my-company/:companyID",
+    path: "/my-company",
     element: <MyCompany />,
   },
   {

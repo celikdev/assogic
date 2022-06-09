@@ -15,15 +15,18 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const BASE_URL = "https://assogic.c1-na.altogic.com/";
+  const [loading, setLoading] = useState(false);
+
   const handleLogin = async (e) => {
+    setLoading(true);
     e.preventDefault();
     await axios
-      .post(`${BASE_URL}/user/login`, {
+      .post(`${process.env.REACT_APP_ALTOGIC_BASE_URL}/user/login`, {
         email,
         password,
       })
       .then((res) => {
+        setLoading(false);
         setCookie("userToken", res.data.session.token);
         if (!res.data.found.companyID) {
           navigate("/create-or-join");
@@ -32,6 +35,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
+        setLoading(false);
         setError(true);
         setErrorMessage("Invalid email or password!");
       });
@@ -55,7 +59,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
             />
-            <Button onClick={handleLogin}>
+            <Button loading={loading} onClick={handleLogin}>
               <h1 className="font-Montserrat font-bold text-sm text-main">
                 Login
               </h1>

@@ -1,7 +1,7 @@
 import React from "react";
 import { ExampleCards } from "../components/Home";
 
-import { Container, Header } from "../components/main";
+import { Container, Footer, Header } from "../components/main";
 
 const Home = () => {
   return (
@@ -16,6 +16,7 @@ const Home = () => {
         </div>
         <ExampleCards />
       </Container>
+      <Footer />
     </>
   );
 };

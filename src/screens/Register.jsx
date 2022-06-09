@@ -15,20 +15,24 @@ const Register = () => {
 
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const BASE_URL = "https://assogic.c1-na.altogic.com";
+
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e) => {
+    setLoading(true);
     e.preventDefault();
     await axios
-      .post(`${BASE_URL}/user/register`, {
+      .post(`${process.env.REACT_APP_ALTOGIC_BASE_URL}/user/register`, {
         name,
         email,
         password,
       })
       .then((res) => {
+        setLoading(false);
         navigate("/login");
       })
       .catch((err) => {
+        setLoading(false);
         setError(true);
         setErrorMessage("This credentials not be used!");
       });
@@ -63,7 +67,7 @@ const Register = () => {
                 I Accept the Terms Of Use
               </text>
             </label>
-            <Button onClick={handleRegister}>
+            <Button loading={loading} onClick={handleRegister}>
               <text className="font-Montserrat font-bold text-sm text-main">
                 Register
               </text>
