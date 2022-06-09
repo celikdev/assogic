@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import altogic from "../Altogic";
 
 import { Container, Footer } from "../components/main";
 import Header from "../components/main/Header";
@@ -8,24 +8,30 @@ import { Button, ErrorBox, Input } from "../components/main/UI";
 
 const Register = () => {
   const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const BASE_URL = "https://assogic.c1-na.altogic.com";
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    await altogic.auth
-      .signUpWithEmail(email, password, name)
-      .then((res) => {
-        if (res.errors && res.errors.items[0].code === "email_not_unique") {
-          setError(true);
-          setErrorMessage("This email cannot be used!");
-        }
+    await axios
+      .post(`${BASE_URL}/user/register`, {
+        name,
+        email,
+        password,
       })
-      .then((res) => navigate("/create-or-join"));
+      .then((res) => {
+        navigate("/login");
+      })
+      .catch((err) => {
+        setError(true);
+        setErrorMessage("This credentials not be used!");
+      });
   };
 
   return (

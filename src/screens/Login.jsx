@@ -1,7 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
-import altogic from "../Altogic";
 import { Container, Footer } from "../components/main";
 import Header from "../components/main/Header";
 import { Button, ErrorBox, Input } from "../components/main/UI";
@@ -15,16 +15,26 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const BASE_URL = "https://assogic.c1-na.altogic.com/";
   const handleLogin = async (e) => {
     e.preventDefault();
-    await altogic.auth.signInWithEmail(email, password).then((res) => {
-      if (res.session.token) {
-        setCookie("userToken", res.session.token);
-        navigate("/");
-      } else {
-        alert("Login failed");
-      }
-    });
+    await axios
+      .post(`${BASE_URL}/user/login`, {
+        email,
+        password,
+      })
+      .then((res) => {
+        setCookie("userToken", res.data.session.token);
+        if (!res.data.found.companyID) {
+          navigate("/create-or-join");
+        } else {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        setError(true);
+        setErrorMessage("Invalid email or password!");
+      });
   };
 
   return (
