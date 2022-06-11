@@ -36,29 +36,32 @@ const Account = () => {
     <>
       <Header />
       <Container>
-        <h1 className="font-bold text-lg">Account</h1>
-        <div className="flex flex-col text-center">
-          {data.found && data.found1 ? (
-            <>
-              <span className="font-bold flex gap-1 text-center">
-                <h1 className="opacity-50">User Name:</h1> {data.found1.name}
-              </span>
-              <span className="font-bold flex gap-1 text-center">
-                <h1 className="opacity-50">User Email:</h1> {data.found1.email}
-              </span>
-              <span className="font-bold flex gap-1 text-center">
-                <h1 className="opacity-50">User Company:</h1>
-                {data.found.companyName}
-              </span>
-            </>
-          ) : null}
+        <div className="w-1/4 gap-8 py-4 flex flex-col items-center rounded-lg bg-gray-200 filter drop-shadow-lg">
+          <h1 className="font-bold text-lg">Account</h1>
+          <div className="flex flex-col text-center">
+            {data.found && data.found1 ? (
+              <>
+                <span className="font-bold flex gap-1 text-center">
+                  <h1 className="opacity-50">User Name:</h1> {data.found1.name}
+                </span>
+                <span className="font-bold flex gap-1 text-center">
+                  <h1 className="opacity-50">User Email:</h1>{" "}
+                  {data.found1.email}
+                </span>
+                <span className="font-bold flex gap-1 text-center">
+                  <h1 className="opacity-50">User Company:</h1>
+                  {data.found.companyName}
+                </span>
+              </>
+            ) : null}
+          </div>
+          <button
+            onClick={() => handleLogout()}
+            className="text-main font-bold border-2 border-error px-8 py-2 rounded-lg text-sm transition-colors duration-300 hover:bg-error hover:border-transparent hover:text-primary"
+          >
+            Logout
+          </button>
         </div>
-        <button
-          onClick={() => handleLogout()}
-          className="text-main font-bold border-2 border-error px-8 py-2 rounded-lg text-sm transition-colors duration-300 hover:bg-error hover:border-transparent hover:text-primary"
-        >
-          Logout
-        </button>
       </Container>
     </>
   );

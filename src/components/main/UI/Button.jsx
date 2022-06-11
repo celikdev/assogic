@@ -1,10 +1,10 @@
 import React from "react";
 
-const Button = ({ children, loading, className, onClick }) => {
+const Button = ({ children, disabled, loading, className, onClick }) => {
   return (
     <button
       onClick={onClick}
-      disabled={loading}
+      disabled={disabled || loading}
       className={`${className} transition-colors disabled:cursor-not-allowed disabled:bg-transparent flex items-center justify-center duration-300 border-2 border-secondary hover:bg-secondary w-[250px] h-10 py-2 rounded-lg`}
     >
       {loading ? (

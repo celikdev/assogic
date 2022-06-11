@@ -17,6 +17,7 @@ const CustomModal = ({ children, isOpen }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      backgroundColor: "rgb(229,231,235)",
     },
   };
 

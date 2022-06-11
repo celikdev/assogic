@@ -37,7 +37,7 @@ const Login = () => {
       .catch((err) => {
         setLoading(false);
         setError(true);
-        setErrorMessage("Invalid email or password!");
+        setErrorMessage(err.response.data[0].message);
       });
   };
 
@@ -46,7 +46,7 @@ const Login = () => {
       <Header />
       <Container>
         <ErrorBox error={error} errorMessage={errorMessage} />
-        <div className="w-1/4 gap-8 py-4 flex flex-col items-center rounded-lg bg-primary filter drop-shadow-lg">
+        <div className="w-1/4 gap-8 py-4 flex flex-col items-center rounded-lg bg-gray-200 filter drop-shadow-lg">
           <h1 className="font-Montserrat font-bold">Login to Assogic</h1>
           <div className="flex flex-col gap-4 items-center w-full">
             <Input

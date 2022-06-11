@@ -7,6 +7,7 @@ module.exports = {
         primary: "#FAFAFA",
         secondary: "#C39EFF",
         error: "#eb3b5a",
+        success: "#55FFC2",
       },
       fontFamily: {
         Montserrat: ["Montserrat", "sans-serif"],

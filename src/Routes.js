@@ -1,12 +1,14 @@
 import {
   Account,
   CreateOrJoin,
+  ForgotPassword,
   Home,
   HowItWorks,
   Login,
   MyCompany,
   NotFound,
   Register,
+  EmailVerifySuccess,
 } from "./screens";
 
 export const routes = [
@@ -17,6 +19,14 @@ export const routes = [
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/user/verify/:userID",
+    element: <EmailVerifySuccess />,
   },
   {
     path: "/register",

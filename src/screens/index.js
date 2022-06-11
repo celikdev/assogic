@@ -5,6 +5,8 @@ import Account from "./Account";
 import MyCompany from "./MyCompany";
 import HowItWorks from "./HowItWorks";
 import CreateOrJoin from "./CreateOrJoin";
+import ForgotPassword from "./ForgotPassword";
+import EmailVerifySuccess from "./EmailVerifySuccess";
 
 import NotFound from "./NotFound";
 
@@ -17,4 +19,6 @@ export {
   HowItWorks,
   Account,
   NotFound,
+  ForgotPassword,
+  EmailVerifySuccess,
 };

@@ -15,7 +15,7 @@ const Home = () => {
       <Header />
       <Container>
         <h1 className="font-bold text-lg">How It Works?</h1>
-        <div className="gap-8 px-10 my-8 flex flex-col items-center rounded-lg bg-primary filter drop-shadow-lg">
+        <div className="gap-8 px-10 my-8 flex flex-col items-center rounded-lg bg-gray-200 filter drop-shadow-lg">
           <div className="pt-8 flex flex-col items-center">
             {steps.map((step, index) => (
               <>
